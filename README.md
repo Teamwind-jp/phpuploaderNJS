@@ -1,26 +1,41 @@
 # phpuploaderNJS
 
 本プロジェクトは、Nodejsによるサーバーサイドの保守ツールです。  
-
-本exeの機能は、  
+指定フォルダをzip(password付き)し他サーバーへアップロード(php)しバックアップしています。  
+  
+処理内容は、  
 1.指定フォルダをzip。  
 2.負荷のかからないサイズの複数ファイルにカット。  
-3.順次他phpサーバーへアップロードしています。  
-4.以上を日次または即時実行。  
-
+3.順次phpサーバーへアップロードしています。  
+4.phpサーバー側で結合し保管。
+5.以上を日次または即時実行。  
 以上です。  
-
-公開中の 下記プロジェクト 
+  
+※※補足※※  
+Windowsサーバー用に.Net版で公開中の 下記プロジェクトと同様の処理をNodejs(JavaScript)版で作るとどうなるのかという目的で作成しました。  
 phpuploader  VisualBasic版  
 phpuploaderCS Visualc#版  
-と同様の処理をNodejs(JavaScript)版で作るとどうなるのかという目的で作成しました。  
+いろいろ比較した個人的な感想は、後述していますのでよろしければご覧ください。  
 
+# Requirement
+Windows11上で書いています。  
+nvmにてnodejsをインストール。現時点では下記バージョンです。  
+Visual Studio Codeを使用しています。バージョン: 1.103.2  
+Node.js: 22.17.0  
 
+本プロジェクトを実行するためのphpサーバーが必要です。  
 
-
-
-
-
+# Usage
+1.本プロジェクトのソース以外に使用しているライブラリ（node_modules）は下記です。  
+　archiver (zip用)  
+　archiver-zip-encryptable (zip暗号化サポート)  
+　iconv-lite 　(utf8 -> sjis変換 zipのパスワード用)  
+　axios form-data (upload用)  
+　以上をターミナルにてインストールしています。  
+  
+2.index.jsのenv変数を実行環境に合わせて設定してください。  
+  
+3.ターミナルにて[npm start]で実行します。
 
 
 
