@@ -8,14 +8,12 @@
 2.負荷のかからないサイズの複数ファイルにカット。  
 3.順次phpサーバーへアップロードしています。  
 4.phpサーバー側で結合し保管。  
-5.以上を日次または即時実行。  
 以上です。  
   
 ※※補足※※  
 Windowsサーバー用に.Net版で公開中の 下記プロジェクトと同様の処理をNodejs(JavaScript)版で作るとどうなるのかという目的で作成しました。  
-phpuploader  VisualBasic版  
-phpuploaderCS Visualc#版  
-いろいろ比較した個人的な感想は、後述していますのでよろしければご覧ください。  
+phpuploader  basic版  
+phpuploaderCS c#版  
   
 # Requirement
 Windows11上で書いています。  
@@ -40,6 +38,8 @@ Node.js: 22.17.0
   
 4.添付しているreceive.phpは、公開中の.net版と共通です。フォルダの指定などwindowsサーバー前提にしていますので適宜変更してください。  
   
+5.日次バッチ処理する場合は、'node-cron'でindex.js内のasync内をループさせるかwindowsタスクスケジューラーに登録してください。  
+  
 # How It Works
   
 1.uploadに至る各処理は、別々のソースにしています。index.jsでコールする構成です。各処理は非同期ですのでawaitで待って指定フォルダ分をループしています。  
@@ -53,19 +53,14 @@ Node.js: 22.17.0
 3.md5取得。  
 4.upload。  
 5.非同期処理。  
-6.バッチ処理。  
   
 # Note
   
-
-
-バグがあるかもしれません。自己責任でご利用ください。また適宜コード変更してください。
-ご要望等がございましたらメール下さい。
-
-
+最後に  
+コードはすべてwindows前提です。linuxはパス等適宜変更してください。
+バグがあるかもしれません。自己責任でご利用ください。また適宜コード変更してください。  
+ご要望等がございましたらメール下さい。  
+  
 # License
-MIT license. Copyright: Teamwind.
-zip uses the SharpZipLib library.
-
 rootのjsのみ　MIT license。著作権は、Teamwindです。  
-その他ライブラリは、ライブラリ作者に帰属します。
+その他ライブラリは、ライブラリ作者に帰属します。  

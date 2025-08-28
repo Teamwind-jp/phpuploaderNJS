@@ -17,7 +17,6 @@ const env = {
     psw : '123*+/あいう'  //zipパスワード　マルチバイトはzip.js内でShift_JISに変換しています。
 };
 
-//メイン処理  適宜エラー処理等入れてください。
 (async () => {
     try {
         for (const [index, dir] of env.directories.entries()) {
@@ -51,7 +50,7 @@ const env = {
                 const fileName = path.basename(file);
                 //phpへのprm=転送ファイル名,分割番号,最終分割番号,当該md5,結合したzipのmd5
                 const prm = `${fileName},${index},${rcfiles.length - 1},${filemd5},${rcmd5}`;
-                console.log("Go:" + prm);
+                //console.log("Go:" + prm);
                 //アップロード
                 const rc = await axios.uploadFile(env.phpsrv, file, prm);
                 //アップロード成功したら分割ファイル削除
@@ -67,3 +66,4 @@ const env = {
         console.error('Error:', error);
     }
 })();
+
