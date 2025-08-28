@@ -9,7 +9,7 @@
 
     //MIT license (c)teamwind n.h
     
-    //保管フォルダ
+    //保管フォルダ例
     $storagedir = "c:\\backup\\";
 
     //?
